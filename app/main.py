@@ -1,20 +1,19 @@
 class Animal:
-    alive = []
+    alive: list["Animal"] = []
 
-    def __init__(self,
-                 name: str,
-                 health: int = 100,
-                 hidden: bool = False) -> None:
+    def __init__(
+            self,
+            name: str,
+            health: int = 100,
+            hidden: bool = False
+    ) -> None:
         self.name = name
         self.health = health
         self.hidden = hidden
 
         Animal.alive.append(self)
-        if self.health <= 0:
-            self.health = 0
-            Animal.alive.remove(self)
 
-    def __repr__(self) -> None:
+    def __repr__(self) -> str:
         return (f"{{Name: {self.name}, Health:"
                 f" {self.health}, Hidden: {self.hidden}}}")
 
